@@ -4,12 +4,20 @@ import getExtenstion from '../function/getExtenstion'
 export const editorsSlice = createSlice({
   name: "editors",
   initialState: {
-    value: [
+    value: JSON.parse(localStorage.getItem("editors")) || [
       {
         id: 1,
-        name: `manchaster.py`,
-        content: `print("Hello world")`,
-        language: "python",
+        name: `manchaster.cpp`,
+        content: `#include <iostream>
+using namespace std;
+
+// main() is where program execution begins.
+int main()
+{
+    cout << "Hello CPP!"; // prints Hello CPP!
+    return 0;
+}`,
+        language: "cpp",
         output: "",
       },
     ],
@@ -17,11 +25,13 @@ export const editorsSlice = createSlice({
   reducers: {
     addEditor: (state, action) => {
       state.value.push(action.payload);
+      localStorage.setItem("editors", JSON.stringify(state.value));
     },
     removeEditor: (state, action) => {
       state.value = state.value.filter(
         (editor) => editor.id !== action.payload
       );
+      localStorage.setItem("editors", JSON.stringify(state.value));
     },
     updateLanguage: (state, action) => {
       state.value = state.value.map((editor) => {
@@ -35,6 +45,7 @@ export const editorsSlice = createSlice({
         }
         return editor;
       });
+      localStorage.setItem("editors", JSON.stringify(state.value));
     },
   },
 });

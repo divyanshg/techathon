@@ -1,9 +1,9 @@
-import React, {useContext} from 'react'
-import EditorContext from '../../Contexts/Editor'
+import { useSelector } from 'react-redux';
+
 import getFileIcon from '../../function/getFileIcon';
 
 function EditorTabBar() {
-    const { editor } = useContext(EditorContext);
+    const editor = useSelector(state => state.editor.value);
   return (
     <div className="border-b border-gray-800">
         {editor && (

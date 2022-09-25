@@ -8,7 +8,7 @@ export default function (language){
             return 'java'
         case 'c':
             return 'c'
-        case 'c++':
+        case 'cpp':
             return 'cpp'
     }
 }
