@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 USER root
-#Installing NodeJs
 
+#Installing NodeJs
 RUN apt-get update
 RUN apt-get -y install curl gnupg
 RUN curl -sL https://deb.nodesource.com/setup_16.x  | bash -
