@@ -4,7 +4,7 @@ const EditorContext = createContext();
 export default EditorContext;
 
 export function EditorProvider({ children }) {
-  const [editor, setEditor] = useState({});
+  const [editor, setEditor] = useState(null);
 
   function updateEditorContent(content) {
     let _editor = editor;

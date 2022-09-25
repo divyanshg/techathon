@@ -1,5 +1,6 @@
-import {useContext, useState} from 'react'
-import EditorContext from '../../Contexts/Editor';
+import { useSelector, useDispatch } from 'react-redux';
+import {updateLanguage} from '../../slice/editor';
+import { updateLanguage as updateEditorLanguage } from '../../slice/editors';
 
 const languages = [
     { label: 'C++', value: 'cpp' },
@@ -10,25 +11,33 @@ const languages = [
 ]
 
 function LanguageSelector({ onChange }) {
-  let { editor, updateEditorLanguage } = useContext(EditorContext);
+  const editor = useSelector(state => state.editor.value)
+  const dispatch = useDispatch();
 
   function onChange(event){
-    updateEditorLanguage(event.target.value);
-    editor.language = event.target.value;
+    dispatch(updateLanguage(event.target.value));
+    dispatch(updateEditorLanguage({
+      id: editor.id,
+      language: event.target.value
+    }));
   }
 
   return (
-    <select
-      className="border border-gray-800 bg-[#101e2a] rounded p-1 text-white focus:border-purple-500 focus:outline-none"
-      value={editor?.language}
-      onChange={onChange}
-    >
-      {languages.map((option) => (
-        <option value={option.value} className="text-white">
-          {option.label}
-        </option>
-      ))}
-    </select>
+    <>
+      {editor && (
+        <select
+          className="border border-gray-800 bg-[#101e2a] rounded p-1 text-white focus:border-purple-500 focus:outline-none"
+          value={editor?.language}
+          onChange={onChange}
+        >
+          {languages.map((option) => (
+            <option value={option.value} className="text-white">
+              {option.label}
+            </option>
+          ))}
+        </select>
+      )}
+    </>
   );
 }
 

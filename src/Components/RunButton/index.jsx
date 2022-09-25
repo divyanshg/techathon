@@ -1,8 +1,9 @@
-import React, {useContext} from 'react'
-import EditorContext from '../../Contexts/Editor'
+import { useSelector, useDispatch } from 'react-redux';
+import { updateOutput } from '../../slice/editor';
 
 function RunButton() {
-  let { editor, updateEditorOutput } = useContext(EditorContext);
+  const editor = useSelector(state => state.editor.value)
+  const dispatch = useDispatch();
 
 
   async function runCode() {
@@ -13,12 +14,12 @@ function RunButton() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                code: editor?.code,
+                code: editor?.content,
                 lang: editor?.language
             })
         }).then(res => res.json())
         .then(data => {
-            updateEditorOutput(data.message);
+            dispatch(updateOutput(data.message));
         })
         .catch(err => {
             console.log(err);
@@ -30,8 +31,17 @@ function RunButton() {
   }
 
   return (
-    <button className='bg-purple-500 text-white font-semibold px-4 py-1 rounded hover:bg-purple-700 cursor-pointer' onClick={runCode}>Run Code</button>
-  )
+    <>
+      {editor && (
+        <button
+          className="bg-purple-500 text-white font-semibold px-4 py-1 rounded hover:bg-purple-700 cursor-pointer"
+          onClick={runCode}
+        >
+          Run Code
+        </button>
+      )}
+    </>
+  );
 }
 
 export default RunButton
