@@ -54,6 +54,7 @@ class CRunner extends Runner {
     // const executor = spawn('./Hello.out', [], options);
     const executor = spawn(cmdRun, [], options);
     executor.stdout.on('data', (output) => {
+      process.send(2)
       console.log(String(output));
       callback('0', String(output)); // 0, no error
     });
