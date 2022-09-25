@@ -7,17 +7,18 @@ export const editorsSlice = createSlice({
     value: JSON.parse(localStorage.getItem("editors")) || [
       {
         id: 1,
-        name: `manchaster.cpp`,
-        content: `#include <iostream>
-using namespace std;
-
-// main() is where program execution begins.
-int main()
-{
-    cout << "Hello CPP!"; // prints Hello CPP!
-    return 0;
-}`,
-        language: "cpp",
+        name: `manchaster.c`,
+        content: `
+          #include <stdio.h>
+          int main() {
+            int a;
+            printf("Hello World!");
+            scanf("%d", &a);
+            printf("%d", a);
+            return 0;
+          }
+        `,
+        language: "c",
         output: "",
       },
     ],
