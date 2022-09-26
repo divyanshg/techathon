@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import { setEditor } from '../../slice/editor';
+import { setEditor, removeEditor as deleteCurrentEditor } from '../../slice/editor';
 import { addEditor, removeEditor as deleteEditor } from '../../slice/editors';
 
 
@@ -29,6 +29,7 @@ function Sidebar() {
   function removeEditor(id){
     switchEditor(null)
     dispatch(deleteEditor(id))
+    dispatch(deleteCurrentEditor())
   }
 
   return (

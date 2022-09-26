@@ -11,7 +11,7 @@ import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/mode-python";
 
-import "ace-builds/src-noconflict/theme-xcode";
+import "ace-builds/src-noconflict/theme-solarized_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
 
 function CodeEditor() {
@@ -37,7 +37,7 @@ function CodeEditor() {
           <AceEditor
             placeholder="Write your code here"
             mode={editor?.language}
-            theme="xcode"
+            theme="solarized_dark"
             name={editor?.name}
             onChange={onChange}
             fontSize={16}
