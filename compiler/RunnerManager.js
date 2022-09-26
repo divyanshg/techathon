@@ -12,7 +12,7 @@ function Factory() {
 
     if (lang === 'c') {
       runner = new CRunner();
-    } else if (lang === 'c++') {
+    } else if (lang === 'cpp') {
       runner = new CppRunner();
     } else if (lang === 'java') {
       runner = new JavaRunner();
