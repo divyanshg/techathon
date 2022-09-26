@@ -6,6 +6,7 @@ import { addEditor, removeEditor as deleteEditor } from '../../slice/editors';
 
 import { generateUsername } from "unique-username-generator";
 import getFileIcon from '../../function/getFileIcon';
+import { VscTrash } from 'react-icons/vsc';
 
 function Sidebar() {
   const dispatch = useDispatch();
@@ -41,8 +42,9 @@ function Sidebar() {
       <ul class="relative flex flex-col space-y-1">
         {editors.map((file) => (
           <li
+            title="Click to open editor"
             onClick={() => switchEditor(file)}
-            className="flex flex-row items-center justify-between px-2 py-1 hover:bg-gray-700 rounded cursor-pointer"
+            className="flex flex-row items-center justify-between px-2 py-1 hover:bg-gray-700 rounded cursor-pointer group"
           >
             <div className="flex flex-row items-center space-x-2">
               <img
@@ -51,19 +53,11 @@ function Sidebar() {
               />
               <span className="text-gray-200 text-sm">{file.name}</span>
             </div>
-            <button onClick={() => removeEditor(file.id)} className="text-gray-700 rounded-full w-5 h-5 flex items-center justify-center hover:text-white">
-              x
+            <button title="Delete editor" onClick={() => removeEditor(file.id)} className="text-gray-400 group-hover:block hidden rounded-full w-5 h-5 flex items-center justify-center hover:text-white">
+              <VscTrash />
             </button>
           </li>
         ))}
-        {/* <li class="relative">
-          <a
-            class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
-            href="#!"
-          >
-            Sidenav link 1
-          </a>
-        </li> */}
       </ul>
     </div>
   );

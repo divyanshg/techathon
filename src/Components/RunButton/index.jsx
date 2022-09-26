@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { updateOutput } from '../../slice/editor';
+import { VscPlay } from 'react-icons/vsc';
 
 function RunButton() {
   const editor = useSelector(state => state.editor.value)
@@ -34,10 +35,11 @@ function RunButton() {
     <>
       {editor && (
         <button
-          className="bg-purple-500 text-white font-semibold px-4 py-1 rounded hover:bg-purple-700 cursor-pointer"
+          className="text-purple-600 border border-purple-600 font-semibold px-4 py-1 rounded hover:bg-purple-700 hover:text-white cursor-pointer"
           onClick={runCode}
         >
-          Run Code
+          <VscPlay className="inline-block mr-1" />
+          <span className='text-white'>Run</span>
         </button>
       )}
     </>
