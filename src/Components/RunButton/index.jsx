@@ -9,7 +9,7 @@ function RunButton() {
 
   async function runCode() {
     try{
-        await fetch("http://13.234.240.119/api/run", {
+        await fetch("http://65.1.110.223/api/run", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
