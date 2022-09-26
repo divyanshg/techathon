@@ -9,16 +9,19 @@ function RunButton() {
 
   async function runCode() {
     try{
-        await fetch("http://65.1.110.223/api/run", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            code: editor?.content,
-            lang: editor?.language,
-          }),
-        })
+        await fetch(
+          "http://ec2-65-2-180-129.ap-south-1.compute.amazonaws.com:9010/api/run",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              code: editor?.content,
+              lang: editor?.language,
+            }),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             dispatch(updateOutput(data.message));
