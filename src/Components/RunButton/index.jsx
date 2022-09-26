@@ -9,22 +9,23 @@ function RunButton() {
 
   async function runCode() {
     try{
-        await fetch('http://localhost:9010/api/run', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                code: editor?.content,
-                lang: editor?.language
-            })
-        }).then(res => res.json())
-        .then(data => {
+        await fetch("http://13.234.240.119/api/run", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            code: editor?.content,
+            lang: editor?.language,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
             dispatch(updateOutput(data.message));
-        })
-        .catch(err => {
+          })
+          .catch((err) => {
             console.log(err);
-        })
+          });
     }catch(err){
         alert("There was a problem processing your request")
         console.log(err)

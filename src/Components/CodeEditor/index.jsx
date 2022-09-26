@@ -5,14 +5,7 @@ import {updateContent} from '../../slice/editor'
 import {updateContent as updateCode} from '../../slice/editors'
 
 import EditorTabBar from '../EditorTabBar'
-
-import AceEditor from "react-ace";
-import "ace-builds/src-noconflict/mode-java";
-import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/mode-python";
-
-import "ace-builds/src-noconflict/theme-solarized_dark";
-import "ace-builds/src-noconflict/ext-language_tools";
+import Editor from "@monaco-editor/react";
 
 function CodeEditor() {
   const editor = useSelector(state => state.editor.value)
@@ -23,37 +16,17 @@ function CodeEditor() {
     dispatch(updateCode({id: editor.id, content: newValue}))
   }
 
-  let editorOptions = {
-    mode: 'xml',
-    theme: 'material',
-    lineNumbers: true
-  }
-
   return (
     <div className="h-[65%] flex flex-col">
       {editor ? (
         <div className="w-full h-full">
           <EditorTabBar />
-          <AceEditor
-            placeholder="Write your code here"
-            mode={editor?.language}
-            theme="solarized_dark"
-            name={editor?.name}
+          <Editor
+            height="96%"
+            defaultLanguage={editor?.language}
+            defaultValue={editor?.content}
             onChange={onChange}
-            fontSize={16}
-            showPrintMargin={true}
-            showGutter={true}
-            highlightActiveLine={true}
-            value={editor?.content}
-            height={"96%"}
-            width={"100%"}
-            setOptions={{
-              enableBasicAutocompletion: true,
-              enableLiveAutocompletion: true,
-              enableSnippets: true,
-              showLineNumbers: true,
-              tabSize: 4,
-            }}
+            theme="vs-dark"
           />
         </div>
       ) : (
