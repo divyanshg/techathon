@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 
-!node_modules/react-ace/lib/editorOptions.js
+!node_modules/react-ace
 
 # Editor directories and files
 .vscode/*
