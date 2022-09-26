@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "code-compiler-tecathon",
-      "image": "551961123650.dkr.ecr.ap-south-1.amazonaws.com/code-compiler:latest",
+      "image": "551961123650.dkr.ecr.ap-south-1.amazonaws.com/tecathon_repo:latest",
       "cpu": 10,
       "memory": 300,
       "portMappings": [
