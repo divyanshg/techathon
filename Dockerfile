@@ -12,11 +12,13 @@ RUN npm install -g yarn
 RUN apt install build-essential -y
 
 #Installing Java
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive \
-    apt-get -y install default-jre-headless && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && \
+#     DEBIAN_FRONTEND=noninteractive \
+#     apt-get -y install default-jre-headless && \
+#     apt-get clean && \
+#     rm -rf /var/lib/apt/lists/*
+
+RUN apt install default-jdk -y
 
 WORKDIR /app
 
