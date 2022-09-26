@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 
-!node_modules/.pnpm/react-ace
+!node_modules/react-ace
 
 # Editor directories and files
 .vscode/*
