@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import img from "./human.png";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../slice/user";
 
 const Modal = ({closeModal}) => {
-  const [name, setName] = useState("Name");
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
   const userName = () => {
-    setName(name);
+    dispatch(setUser(name));
   };
-  console.log(name);
 
   return (
     <div
@@ -46,7 +48,7 @@ const Modal = ({closeModal}) => {
             </div>
             <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
               <button
-                onClick={() =>{ setName(userName) ; closeModal(false)}}
+                onClick={() =>{ userName() ; closeModal(false)}}
                 type="button"
                 className="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none  sm:ml-3 sm:w-auto sm:text-sm"
               >

@@ -16,10 +16,15 @@ function Topnav() {
           <LanguageSelector />
           <RunButton />
         </div>
-        <div>
+        <div className='flex flex-row'>
+          <img
+            className="w-6 h-6 bg-red-400 mx-3"
+            src={
+              "https://s01.sgp1.digitaloceanspaces.com/large/879108-vbjtzcqwrq-1526385694.jpeg"
+            }
+          />
           <div className="bg-gray-600 rounded-full px-2 space-x-3 flex fllex-row">
-            {/* <img className="w-6 h-6 bg-red-400 rounded-full -mx-2" /> */}
-            <span className='ml-2 text-white'>{user}</span>
+            <span className="text-white">{user}</span>
           </div>
         </div>
       </div>
