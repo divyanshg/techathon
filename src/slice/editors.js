@@ -4,24 +4,7 @@ import getExtenstion from '../function/getExtenstion'
 export const editorsSlice = createSlice({
   name: "editors",
   initialState: {
-    value: JSON.parse(localStorage.getItem("editors")) || [
-      {
-        id: 1,
-        name: `manchaster.c`,
-        content: `
-          #include <stdio.h>
-          int main() {
-            int a;
-            printf("Hello World!");
-            scanf("%d", &a);
-            printf("%d", a);
-            return 0;
-          }
-        `,
-        language: "c",
-        output: "",
-      },
-    ],
+    value: JSON.parse(localStorage.getItem("editors")) || [],
   },
   reducers: {
     addEditor: (state, action) => {
