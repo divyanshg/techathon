@@ -34,6 +34,15 @@ export const editorsSlice = createSlice({
       );
       localStorage.setItem("editors", JSON.stringify(state.value));
     },
+    updateContent: (state, action) => {
+      state.value = state.value.map((editor) => {
+        if (editor.id === action.payload.id) {
+          editor.content = `${action.payload.content}`;
+        }
+        return editor;
+      });
+      localStorage.setItem("editors", JSON.stringify(state.value));
+    },
     updateLanguage: (state, action) => {
       state.value = state.value.map((editor) => {
         if (editor.id === action.payload.id) {
@@ -51,5 +60,6 @@ export const editorsSlice = createSlice({
   },
 });
 
-export const { addEditor, removeEditor, updateLanguage } = editorsSlice.actions
+export const { addEditor, removeEditor, updateLanguage, updateContent } =
+  editorsSlice.actions;
 export default editorsSlice.reducer

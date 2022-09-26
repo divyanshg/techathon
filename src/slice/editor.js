@@ -19,6 +19,10 @@ export const editorSlice = createSlice({
               getExtenstion(action.payload);
             localStorage.setItem("editor", JSON.stringify(state.value));
         },
+        updateContent: (state, action) => {
+            state.value.content = `${action.payload}`;
+            localStorage.setItem("editor", JSON.stringify(state.value));
+        },
         updateOutput: (state, action) => {
             state.value.output = action.payload;
             localStorage.setItem("editor", JSON.stringify(state.value));
@@ -26,5 +30,6 @@ export const editorSlice = createSlice({
     }
 })
 
-export const { setEditor, updateLanguage, updateOutput } = editorSlice.actions;
+export const { setEditor, updateLanguage, updateOutput, updateContent } =
+  editorSlice.actions;
 export default editorSlice.reducer;
