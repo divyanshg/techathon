@@ -7,5 +7,5 @@ export default defineConfig({
   define: {
     global: {},
   },
-  server: { port: 80 },
+  server: { port: 3000 },
 });
