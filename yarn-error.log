@@ -1,0 +1,56 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn
+
+PATH: 
+  /home/divyanshg/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.14.2
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/divyanshg/Desktop/hackathon/techathon/package.json: Unexpected token } in JSON at position 299
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "CodeCompiler",
+    "version": "1.0.0",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js",
+      "dev": "nodemon app.js"
+    },
+    "dependencies": {
+      "body-parser": "^1.19.1",
+      "express": "^4.17.2",
+      "file-loader": "^1.1.11",
+      "mem": "^8.1.1",
+      "mkdirp": "^0.5.1",
+    },
+    "devDependencies": {
+      "fstream": "1.0.12",
+      "glob": "^7.2.0",
+      "nodemon": "^2.0.15",
+      "yargs-parser": "^20.2.9"
+    },
+    "engines": {
+      "node": "14.16.1",
+      "npm": "6.14.12"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
